@@ -28,6 +28,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to your Photos.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Need to Access Camera to take pictures</string>
 	<key>NSAppleMusicUsageDescription</key>
