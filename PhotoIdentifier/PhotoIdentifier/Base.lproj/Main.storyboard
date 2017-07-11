@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,14 @@
                         <viewControllerLayoutGuide type="bottom" id="FF9-sa-RKY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z1x-gv-LDr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="563"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="433"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta9-jh-Cma">
-                                <rect key="frame" x="168.66666666666666" y="648" width="77" height="30"/>
+                                <rect key="frame" x="149" y="579" width="77" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.83628763177163867" blue="0.4432436555094067" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Take Photo">
@@ -36,19 +36,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You took a photo of:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-m1-TyC">
-                                <rect key="frame" x="130" y="584" width="154" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-UV-JC8">
-                                <rect key="frame" x="186" y="613" width="42" height="21"/>
+                                <rect key="frame" x="110.5" y="457" width="154" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sba-jB-X2o">
-                                <rect key="frame" x="163" y="686" width="88" height="30"/>
+                                <rect key="frame" x="143.5" y="617" width="88" height="30"/>
                                 <color key="backgroundColor" red="0.64136920719368307" green="0.89309539630987367" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select Photo">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,30 +51,47 @@
                                     <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qpz-87-w81"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-UV-JC8">
+                                <rect key="frame" x="112.5" y="506" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NMK-B8-D0G"/>
+                                    <constraint firstAttribute="width" constant="150" id="bSe-Dg-nDe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gzf-ax-JuB">
+                                <rect key="frame" x="177" y="544" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FF9-sa-RKY" firstAttribute="top" secondItem="Sba-jB-X2o" secondAttribute="bottom" constant="20" id="3hH-rS-ngF"/>
                             <constraint firstItem="BVk-m1-TyC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4va-uV-agV"/>
                             <constraint firstItem="Ta9-jh-Cma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5X5-Bb-uWu"/>
-                            <constraint firstItem="BVk-m1-TyC" firstAttribute="top" secondItem="Z1x-gv-LDr" secondAttribute="bottom" constant="21" id="EPz-Z0-Gjc"/>
-                            <constraint firstItem="Hbe-UV-JC8" firstAttribute="top" secondItem="BVk-m1-TyC" secondAttribute="bottom" constant="8" id="GXs-Qt-fbc"/>
+                            <constraint firstItem="BVk-m1-TyC" firstAttribute="top" secondItem="Z1x-gv-LDr" secondAttribute="bottom" constant="24" id="EPz-Z0-Gjc"/>
+                            <constraint firstItem="Hbe-UV-JC8" firstAttribute="top" secondItem="BVk-m1-TyC" secondAttribute="bottom" constant="28" id="GXs-Qt-fbc"/>
                             <constraint firstAttribute="trailing" secondItem="Z1x-gv-LDr" secondAttribute="trailing" id="N19-Rz-Lc8"/>
+                            <constraint firstItem="gzf-ax-JuB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oed-2Z-shk"/>
                             <constraint firstItem="Hbe-UV-JC8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OpT-6N-mOl"/>
-                            <constraint firstItem="Ta9-jh-Cma" firstAttribute="top" secondItem="Hbe-UV-JC8" secondAttribute="bottom" constant="14" id="POD-5z-bAY"/>
+                            <constraint firstItem="Ta9-jh-Cma" firstAttribute="top" secondItem="gzf-ax-JuB" secondAttribute="bottom" constant="15" id="SKF-iX-LdZ"/>
                             <constraint firstItem="Z1x-gv-LDr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dBT-Bi-cdl"/>
+                            <constraint firstItem="gzf-ax-JuB" firstAttribute="top" secondItem="Hbe-UV-JC8" secondAttribute="bottom" constant="-12" id="dol-r4-yxp"/>
                             <constraint firstItem="Sba-jB-X2o" firstAttribute="top" secondItem="Ta9-jh-Cma" secondAttribute="bottom" constant="8" id="fkt-Qa-gQa"/>
                             <constraint firstItem="Z1x-gv-LDr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="idh-r2-P8r"/>
                             <constraint firstItem="Sba-jB-X2o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ohD-DE-CKv"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="gzf-ax-JuB" id="2nK-Gl-E6m"/>
+                        <outlet property="answerLabel" destination="Hbe-UV-JC8" id="dAG-nc-gIe"/>
                         <outlet property="imageView" destination="Z1x-gv-LDr" id="vTY-rR-L77"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="289.43661971830988"/>
+            <point key="canvasLocation" x="88.799999999999997" y="289.20539730134936"/>
         </scene>
     </scenes>
 </document>

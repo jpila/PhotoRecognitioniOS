@@ -1,29 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
-  - Clarifai (2.2.0):
-    - AFNetworking (~> 3.1)
+  - BFOAuth (1.0.1)
+  - CloudSight (1.0.4):
+    - BFOAuth (~> 1.0)
+    - RequestUtils (~> 1.1)
+  - RequestUtils (1.1.2)
 
 DEPENDENCIES:
-  - Clarifai
+  - CloudSight (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Clarifai: f9747e7e7460159f639faa184b2ac2d793d01fa4
+  BFOAuth: e3c2e4eaae862a89bc301ed6f292d3cd0d6a107b
+  CloudSight: cbf69900984e30d16498d8282c1cd13b844c0071
+  RequestUtils: 0f04f89abca3936c6566e2f4c3ce5d252036bc89
 
-PODFILE CHECKSUM: a9efcb58afca628521aa995b04afa8d8ae51c200
+PODFILE CHECKSUM: b5c5cc67221e719c333c0d4b4e2bc927e69d5a81
 
 COCOAPODS: 1.2.0

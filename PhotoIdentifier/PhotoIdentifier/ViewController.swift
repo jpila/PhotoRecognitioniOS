@@ -8,16 +8,26 @@
 
 import UIKit
 import MobileCoreServices
+import CloudSight
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     var newMedia: Bool?
+    @IBOutlet weak var answerLabel: UILabel!
+   var cloudsightQuery: CloudSightQuery!
     
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        CloudSightConnection.sharedInstance().consumerKey = "_5uLhqSMAVc6ZikHeIG6zw";
+        CloudSightConnection.sharedInstance().consumerSecret = "Xp7LoRL29MH1jQDrxJpJIw";
+        self.activityIndicatorView.hidesWhenStopped = true;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +87,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             imageView.image = image
             
+            // Create JPG image data from UIImage
+            let imageData = UIImageJPEGRepresentation(image, 0.8)
+            
+            cloudsightQuery = CloudSightQuery(image: imageData,
+                                              atLocation: CGPoint.zero,
+                                              withDelegate: self,
+                                              atPlacemark: nil,
+                                              withDeviceId: "device-id")
+            cloudsightQuery.start()
+            activityIndicatorView.startAnimating()
+            
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
                                                #selector(ViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
@@ -103,8 +124,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+    //MARK: cloudSightDelegate Methods
+    
+    func cloudSightQueryDidFinishUploading(_ query: CloudSightQuery!) {
+        print("cloudSightQueryDidFinishUploading")
+    }
+    
+    func cloudSightQueryDidFinishIdentifying(_ query: CloudSightQuery!) {
+        print("cloudSightQueryDidFinishIdentifying")
+        
+        // CloudSight runs in a background thread, and since we're only
+        // allowed to update UI in the main thread, let's make sure it does.
+        DispatchQueue.main.async {
+            self.answerLabel.text = query.name()
+            self.activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    func cloudSightQueryDidFail(_ query: CloudSightQuery!, withError error: Error!) {
+        print("CloudSight Failure: \(error)")
     }
 
 }
