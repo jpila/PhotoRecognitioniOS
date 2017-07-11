@@ -14,7 +14,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imageView: UIImageView!
     var newMedia: Bool?
-    @IBOutlet weak var answerLabel: UILabel!
+    
+    @IBOutlet weak var responseField: UITextView!
    var cloudsightQuery: CloudSightQuery!
     
     
@@ -140,7 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // CloudSight runs in a background thread, and since we're only
         // allowed to update UI in the main thread, let's make sure it does.
         DispatchQueue.main.async {
-            self.answerLabel.text = query.name()
+            self.responseField.text = query.name()
             self.activityIndicatorView.stopAnimating()
         }
     }
