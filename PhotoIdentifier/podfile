@@ -8,4 +8,7 @@ use_frameworks!
   # Pods for PhotoIdentifier
 pod "CloudSight", "~> 1.0"
 
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+
 end

@@ -9,6 +9,8 @@
 import UIKit
 import MobileCoreServices
 import CloudSight
+import Firebase
+import FirebaseAuth
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -27,7 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         CloudSightConnection.sharedInstance().consumerKey = "_5uLhqSMAVc6ZikHeIG6zw";
         CloudSightConnection.sharedInstance().consumerSecret = "Xp7LoRL29MH1jQDrxJpJIw";
-        self.activityIndicatorView.hidesWhenStopped = true;
+        
+        
         
     }
 
@@ -129,6 +132,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
     //MARK: cloudSightDelegate Methods
     
     func cloudSightQueryDidFinishUploading(_ query: CloudSightQuery!) {
@@ -150,6 +156,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("CloudSight Failure: \(error)")
     }
 
+    @IBAction func logoutAction(_ sender: Any) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                
+              dismiss(animated: true, completion: nil)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 

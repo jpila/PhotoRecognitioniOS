@@ -13,6 +13,10 @@
 		AB3E165D1F128E490084E672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3E165B1F128E490084E672 /* Main.storyboard */; };
 		AB3E165F1F128E490084E672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB3E165E1F128E490084E672 /* Assets.xcassets */; };
 		AB3E16621F128E490084E672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3E16601F128E490084E672 /* LaunchScreen.storyboard */; };
+		AB49667B1F16593900E54901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49667A1F16593900E54901 /* LoginViewController.swift */; };
+		AB49667D1F16594300E54901 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49667C1F16594300E54901 /* SignUpViewController.swift */; };
+		AB49667F1F16595200E54901 /* ResetPassWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49667E1F16595200E54901 /* ResetPassWordViewController.swift */; };
+		AB4966811F16740400E54901 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB4966801F16740400E54901 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		AB3E165E1F128E490084E672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB3E16611F128E490084E672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB3E16631F128E490084E672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB49667A1F16593900E54901 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AB49667C1F16594300E54901 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AB49667E1F16595200E54901 /* ResetPassWordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPassWordViewController.swift; sourceTree = "<group>"; };
+		AB4966801F16740400E54901 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +89,13 @@
 				AB3E16571F128E490084E672 /* AppDelegate.swift */,
 				AB3E16591F128E490084E672 /* ViewController.swift */,
 				AB3E165B1F128E490084E672 /* Main.storyboard */,
+				AB49667C1F16594300E54901 /* SignUpViewController.swift */,
+				AB49667E1F16595200E54901 /* ResetPassWordViewController.swift */,
+				AB49667A1F16593900E54901 /* LoginViewController.swift */,
 				AB3E165E1F128E490084E672 /* Assets.xcassets */,
 				AB3E16601F128E490084E672 /* LaunchScreen.storyboard */,
 				AB3E16631F128E490084E672 /* Info.plist */,
+				AB4966801F16740400E54901 /* GoogleService-Info.plist */,
 			);
 			path = PhotoIdentifier;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB3E16621F128E490084E672 /* LaunchScreen.storyboard in Resources */,
+				AB4966811F16740400E54901 /* GoogleService-Info.plist in Resources */,
 				AB3E165F1F128E490084E672 /* Assets.xcassets in Resources */,
 				AB3E165D1F128E490084E672 /* Main.storyboard in Resources */,
 			);
@@ -212,7 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB49667F1F16595200E54901 /* ResetPassWordViewController.swift in Sources */,
+				AB49667B1F16593900E54901 /* LoginViewController.swift in Sources */,
 				AB3E165A1F128E490084E672 /* ViewController.swift in Sources */,
+				AB49667D1F16594300E54901 /* SignUpViewController.swift in Sources */,
 				AB3E16581F128E490084E672 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
