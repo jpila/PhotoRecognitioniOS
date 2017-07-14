@@ -14,15 +14,15 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    var tap: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        self.tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         
         
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(self.tap)
         // Do any additional setup after loading the view.
     }
 
@@ -87,7 +87,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     func completeSignIn(id: String, userData: Dictionary<String,String?>) {
         Dataservice.ds.createFirebaseDBUser(uid: id, userData: userData as! Dictionary<String, String>)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "History")
-        
+        view.removeGestureRecognizer(self.tap)
         self.present(vc!, animated: true, completion: nil)
 
         

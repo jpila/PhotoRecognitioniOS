@@ -29,9 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
-        
-        view.addGestureRecognizer(tap);
+     
         CloudSightConnection.sharedInstance().consumerKey = "_5uLhqSMAVc6ZikHeIG6zw";
         CloudSightConnection.sharedInstance().consumerSecret = "Xp7LoRL29MH1jQDrxJpJIw";
         

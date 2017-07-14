@@ -296,7 +296,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qU-aL-mF6" id="0Qg-HH-xgn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="131.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Jw-Xf-Qy3">
@@ -470,6 +470,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.99869197607040405" green="0.0" blue="0.15912652743200145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickedCancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RO4-uB-B9F"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -499,7 +502,6 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="gzf-ax-JuB" id="2nK-Gl-E6m"/>
-                        <outlet property="cancelButtonClicked" destination="wy0-W9-ipf" id="KnF-dK-oVl"/>
                         <outlet property="imageView" destination="Z1x-gv-LDr" id="vTY-rR-L77"/>
                         <outlet property="responseField" destination="v9W-yS-fQF" id="bpq-mZ-4N0"/>
                     </connections>

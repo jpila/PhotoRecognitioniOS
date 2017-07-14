@@ -24,7 +24,8 @@ class HistoryViewController: ViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
-        
+        super.viewDidLoad()
+      
         Dataservice.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             self.posts.removeAll()
             if let snapshots = snapshot.children.allObjects as?
