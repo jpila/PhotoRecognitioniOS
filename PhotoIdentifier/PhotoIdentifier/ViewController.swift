@@ -242,7 +242,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     
     
-    
+    @IBAction func clickedCancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 

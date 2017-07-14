@@ -499,6 +499,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="gzf-ax-JuB" id="2nK-Gl-E6m"/>
+                        <outlet property="cancelButtonClicked" destination="wy0-W9-ipf" id="KnF-dK-oVl"/>
                         <outlet property="imageView" destination="Z1x-gv-LDr" id="vTY-rR-L77"/>
                         <outlet property="responseField" destination="v9W-yS-fQF" id="bpq-mZ-4N0"/>
                     </connections>
