@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class LoginViewController: ViewController {
+class LoginViewController: ViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,7 +18,11 @@ class LoginViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        
+        
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
@@ -53,11 +57,10 @@ class LoginViewController: ViewController {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
                 if error == nil{
                     print("You have sucessfully logged in ")
-                    
+                        let userData = ["provider": user?.providerID]
                     // go to homeviewcontroller if login is sucessful
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+                        self.completeSignIn(id: (user?.uid)!, userData: userData)
                     
-                    self.present(vc!, animated: true, completion: nil)
                 } else {
                     
                     // Tells the user that there is an error and then gets firebase to tell them
@@ -76,4 +79,17 @@ class LoginViewController: ViewController {
 
     }
 
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func completeSignIn(id: String, userData: Dictionary<String,String?>) {
+        Dataservice.ds.createFirebaseDBUser(uid: id, userData: userData as! Dictionary<String, String>)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "History")
+        
+        self.present(vc!, animated: true, completion: nil)
+
+        
+    }
 }

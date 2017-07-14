@@ -73,6 +73,9 @@ class ResetPassWordViewController: ViewController {
     }
 
     
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 

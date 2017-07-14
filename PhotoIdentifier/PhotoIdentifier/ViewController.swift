@@ -11,27 +11,33 @@ import MobileCoreServices
 import CloudSight
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
+
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-    var newMedia: Bool?
-    
     @IBOutlet weak var responseField: UITextView!
-   var cloudsightQuery: CloudSightQuery!
-    
-    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    var ref: DatabaseReference!
+    var newMedia: Bool?
+    var cloudsightQuery: CloudSightQuery!
+    var downloadURL: String?
+    
+    var success: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         
+        view.addGestureRecognizer(tap);
         CloudSightConnection.sharedInstance().consumerKey = "_5uLhqSMAVc6ZikHeIG6zw";
         CloudSightConnection.sharedInstance().consumerSecret = "Xp7LoRL29MH1jQDrxJpJIw";
         
-        
-        
+        print(Auth.auth().currentUser ?? "banana")
+        print(Auth.auth().currentUser?.uid ?? "banana")
+        ref = Database.database().reference()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +46,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func takePhoto(_ sender: Any) {
-        
+        self.responseField.text = ""
         if UIImagePickerController.isSourceTypeAvailable(
             UIImagePickerControllerSourceType.camera) {
             
@@ -55,11 +61,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.present(imagePicker, animated: true,
                          completion: nil)
             newMedia = true
+            print(Auth.auth().currentUser?.uid ?? "banana")
         }
     }
     
 
     @IBAction func selectPhoto(_ sender: Any) {
+            self.responseField.text = ""
+        
         if UIImagePickerController.isSourceTypeAvailable(
             UIImagePickerControllerSourceType.savedPhotosAlbum) {
             let imagePicker = UIImagePickerController()
@@ -72,6 +81,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.present(imagePicker, animated: true,
                          completion: nil)
             newMedia = false
+            print(Auth.auth().currentUser ?? "banana")
+            print(Auth.auth().currentUser?.uid ?? "banana")
+            
         }
     }
     
@@ -93,6 +105,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             // Create JPG image data from UIImage
             let imageData = UIImageJPEGRepresentation(image, 0.8)
+            let imgUID = NSUUID().uuidString
+            
+            _ = Dataservice.ds.REF_POST_IMAGES.child(imgUID).putData(imageData!, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                self.downloadURL = metadata.downloadURL()?.absoluteString
+            }
             
             cloudsightQuery = CloudSightQuery(image: imageData,
                                               atLocation: CGPoint.zero,
@@ -100,7 +122,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                               atPlacemark: nil,
                                               withDeviceId: "device-id")
             cloudsightQuery.start()
-            activityIndicatorView.startAnimating()
+            self.activityIndicatorView.isHidden = false;
+            self.activityIndicatorView.startAnimating()
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
@@ -112,6 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+   
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafeRawPointer) {
         
         if error != nil {
@@ -148,7 +172,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // allowed to update UI in the main thread, let's make sure it does.
         DispatchQueue.main.async {
             self.responseField.text = query.name()
+            self.activityIndicatorView.isHidden = true;
             self.activityIndicatorView.stopAnimating()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                
+                let ac = UIAlertController(title: "Hello!", message: "Did the App Get the Image Correct?", preferredStyle: .alert)
+                
+                let yesAction = UIAlertAction(title: "YES", style: .default, handler: { (UIAlertAction) in
+                    self.success = true
+                })
+                let noAction = UIAlertAction(title: "NO", style: .cancel, handler: { (UIAlertAction) in
+                    self.success = false
+                })
+                
+                ac.addAction(yesAction)
+                ac.addAction(noAction)
+                
+                self.present(ac, animated: true, completion: nil)
+            })
         }
     }
     
@@ -156,17 +198,52 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("CloudSight Failure: \(error)")
     }
 
-    @IBAction func logoutAction(_ sender: Any) {
-        if Auth.auth().currentUser != nil {
-            do {
-                try Auth.auth().signOut()
-                
-              dismiss(animated: true, completion: nil)
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
+
+    
+    
+    
+    @IBAction func saveToDatabase(_ sender: Any) {
+        
+        if(self.responseField.text == "" || self.imageView.image == nil || self.success == nil){
+            
+            let alertController = UIAlertController(title: "Error", message: "Please wait for app to finish processing before posting", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            
+        } else {
+            let key = Dataservice.ds.REF_POSTS.childByAutoId().key
+            let post: Dictionary <String, AnyObject> =
+                ["response": self.responseField.text as AnyObject,
+                 "imgUrl": self.downloadURL as AnyObject,
+                 "postedBy": Auth.auth().currentUser?.uid as AnyObject,
+                 "correct": self.success as AnyObject
+            ]
+            
+            let fireBasePost = Dataservice.ds.REF_POSTS.childByAutoId()
+            
+            let childUpdates = ["/Posts/\(key)": post,
+                                "/Users/\(Dataservice.ds.REF_USER_CURRENT)/posts/\(key)":post]
+            
+            Dataservice.ds.REF_BASE.updateChildValues(childUpdates)
+            
+            dismiss(animated: true, completion: nil)
+            
+            
         }
+        
+        
+        
     }
+
+    
+    
+    
+    
 }
 
 

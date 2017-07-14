@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2506F8205D037129DDBA00EF /* Pods_PhotoIdentifier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438DDCE5CFC46BDA38E88C4B /* Pods_PhotoIdentifier.framework */; };
+		AB1878DC1F180464003C98D8 /* Dataservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878DB1F180464003C98D8 /* Dataservice.swift */; };
+		AB1878E11F18094A003C98D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878E01F18094A003C98D8 /* Constants.swift */; };
+		AB1878E31F180FBB003C98D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878E21F180FBB003C98D8 /* HistoryViewController.swift */; };
+		AB1878E61F181B3D003C98D8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878E51F181B3D003C98D8 /* Post.swift */; };
+		AB1878F01F182EFD003C98D8 /* TheCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878EF1F182EFD003C98D8 /* TheCustomCell.swift */; };
+		AB1878F21F1848CC003C98D8 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1878F11F1848CC003C98D8 /* RoundView.swift */; };
 		AB3E16581F128E490084E672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3E16571F128E490084E672 /* AppDelegate.swift */; };
 		AB3E165A1F128E490084E672 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3E16591F128E490084E672 /* ViewController.swift */; };
 		AB3E165D1F128E490084E672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3E165B1F128E490084E672 /* Main.storyboard */; };
@@ -23,6 +29,12 @@
 		0C8E70A7202F3664BA81F529 /* Pods-PhotoIdentifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoIdentifier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoIdentifier/Pods-PhotoIdentifier.debug.xcconfig"; sourceTree = "<group>"; };
 		438DDCE5CFC46BDA38E88C4B /* Pods_PhotoIdentifier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoIdentifier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8B31374FF530BCFB01D211 /* Pods-PhotoIdentifier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoIdentifier.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoIdentifier/Pods-PhotoIdentifier.release.xcconfig"; sourceTree = "<group>"; };
+		AB1878DB1F180464003C98D8 /* Dataservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dataservice.swift; sourceTree = "<group>"; };
+		AB1878E01F18094A003C98D8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AB1878E21F180FBB003C98D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		AB1878E51F181B3D003C98D8 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		AB1878EF1F182EFD003C98D8 /* TheCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheCustomCell.swift; sourceTree = "<group>"; };
+		AB1878F11F1848CC003C98D8 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		AB3E16541F128E490084E672 /* PhotoIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3E16571F128E490084E672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB3E16591F128E490084E672 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +77,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB1878DA1F180452003C98D8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AB1878DB1F180464003C98D8 /* Dataservice.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		AB1878DD1F1808CF003C98D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB1878E01F18094A003C98D8 /* Constants.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		AB1878E41F181B35003C98D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB1878E51F181B3D003C98D8 /* Post.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AB1878F31F184B49003C98D8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		AB3E164B1F128E490084E672 = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +129,14 @@
 		AB3E16561F128E490084E672 /* PhotoIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				AB1878F31F184B49003C98D8 /* New Group */,
+				AB1878E41F181B35003C98D8 /* Model */,
+				AB1878DA1F180452003C98D8 /* Services */,
+				AB1878DD1F1808CF003C98D8 /* Utilities */,
 				AB3E16571F128E490084E672 /* AppDelegate.swift */,
 				AB3E16591F128E490084E672 /* ViewController.swift */,
 				AB3E165B1F128E490084E672 /* Main.storyboard */,
+				AB1878E21F180FBB003C98D8 /* HistoryViewController.swift */,
 				AB49667C1F16594300E54901 /* SignUpViewController.swift */,
 				AB49667E1F16595200E54901 /* ResetPassWordViewController.swift */,
 				AB49667A1F16593900E54901 /* LoginViewController.swift */,
@@ -96,6 +144,8 @@
 				AB3E16601F128E490084E672 /* LaunchScreen.storyboard */,
 				AB3E16631F128E490084E672 /* Info.plist */,
 				AB4966801F16740400E54901 /* GoogleService-Info.plist */,
+				AB1878EF1F182EFD003C98D8 /* TheCustomCell.swift */,
+				AB1878F11F1848CC003C98D8 /* RoundView.swift */,
 			);
 			path = PhotoIdentifier;
 			sourceTree = "<group>";
@@ -226,10 +276,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB49667F1F16595200E54901 /* ResetPassWordViewController.swift in Sources */,
+				AB1878F21F1848CC003C98D8 /* RoundView.swift in Sources */,
 				AB49667B1F16593900E54901 /* LoginViewController.swift in Sources */,
 				AB3E165A1F128E490084E672 /* ViewController.swift in Sources */,
 				AB49667D1F16594300E54901 /* SignUpViewController.swift in Sources */,
+				AB1878E11F18094A003C98D8 /* Constants.swift in Sources */,
 				AB3E16581F128E490084E672 /* AppDelegate.swift in Sources */,
+				AB1878E61F181B3D003C98D8 /* Post.swift in Sources */,
+				AB1878DC1F180464003C98D8 /* Dataservice.swift in Sources */,
+				AB1878E31F180FBB003C98D8 /* HistoryViewController.swift in Sources */,
+				AB1878F01F182EFD003C98D8 /* TheCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
